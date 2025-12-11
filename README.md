@@ -1,7 +1,3 @@
-Here is a clean, minimal **README.md** with **no emojis**, focused strictly on instructions and usage.
-
----
-
 # SPH e-Paper PDF Scraper
 
 This script automates downloading Straits Times or Business Times e-paper pages (via NLB) and saves the original high-resolution PDFs. Pages are detected through network responses and merged into a single output PDF.
@@ -75,7 +71,3 @@ The script will:
 * The next-page button state determines whether to continue, wait for ads, or stop at the end.
 * XPaths may need updating if NLB or SPH changes their layout.
 * This is intended for personal offline reading only.
-
----
-
-If you want, I can also write a troubleshooting section, advanced usage, or examples.
