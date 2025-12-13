@@ -1,6 +1,6 @@
-import shutil
 from pathlib import Path
 from datetime import datetime
+from shutil import rmtree
 
 from playwright.sync_api import sync_playwright
 from pypdf import PdfReader, PdfWriter
@@ -280,7 +280,7 @@ def cleanup_page_pdfs():
     """
     if PAGE_PDFS_DIR.exists():
         print(f"[i] Deleting temporary directory: {PAGE_PDFS_DIR}")
-        shutil.rmtree(PAGE_PDFS_DIR)
+        rmtree(PAGE_PDFS_DIR)
 
 
 def main():
@@ -301,11 +301,8 @@ def main():
         viewer_page = open_viewer_page(context, page)
 
         navigate_all_pages(viewer_page)
-        try:
-            merge_saved_pdfs(final_pdf_path)
-            cleanup_page_pdfs()
-        except Exception as e:
-            print(f"[!] Merge failed, keeping page PDFs for inspection: {e}")
+        merge_saved_pdfs(final_pdf_path)
+        cleanup_page_pdfs()
 
         browser.close()
 
