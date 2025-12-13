@@ -1,3 +1,4 @@
+import shutil
 from pathlib import Path
 from datetime import datetime
 
@@ -11,8 +12,8 @@ from pypdf import PdfReader, PdfWriter
 SPH_URL = "https://eresources.nlb.gov.sg/main/sphnewspapers"
 
 # Login credentials (edit these)
-USERNAME = r"username"
-PASSWORD = r"password"  # raw string fine
+USERNAME = r"user"
+PASSWORD = r"pass"  # raw string fine
 
 # Login input selectors
 USERNAME_SELECTOR = "#username"
@@ -273,6 +274,15 @@ def merge_saved_pdfs(final_pdf_path: Path):
     print(f"[i] Merged PDF saved to: {final_pdf_path}")
 
 
+def cleanup_page_pdfs():
+    """
+    Delete the per-page PDF directory after successful merge.
+    """
+    if PAGE_PDFS_DIR.exists():
+        print(f"[i] Deleting temporary directory: {PAGE_PDFS_DIR}")
+        shutil.rmtree(PAGE_PDFS_DIR)
+
+
 def main():
     ensure_dirs()
     today_str = datetime.now().strftime("%Y%m%d")
@@ -291,7 +301,11 @@ def main():
         viewer_page = open_viewer_page(context, page)
 
         navigate_all_pages(viewer_page)
-        merge_saved_pdfs(final_pdf_path)
+        try:
+            merge_saved_pdfs(final_pdf_path)
+            cleanup_page_pdfs()
+        except Exception as e:
+            print(f"[!] Merge failed, keeping page PDFs for inspection: {e}")
 
         browser.close()
 
