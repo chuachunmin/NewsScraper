@@ -62,13 +62,15 @@ Configuration
 Edit the CONFIG section in the script:
 
 Login credentials
-```bash
-USERNAME = r"user"
-PASSWORD = r"pass"
+	```bash
+	USERNAME = r"user"
+	PASSWORD = r"pass"
+
 
 Choose which paper to download
 	```bash
 	PAPER_CODE = "ST"  # or "BT"
+
 
 Supported values:
 	•	ST – The Straits Times
@@ -82,6 +84,7 @@ Run the script normally:
 	```bash
 	python main.py
 
+
 What happens:
 	1.	A browser window opens
 	2.	The script logs in
@@ -93,18 +96,20 @@ What happens:
 
 Output
 	•	Final PDF:
+	```bash
+	output/STYYYYMMDD.pdf
+	output/BTYYYYMMDD.pdf
 
-output/STYYYYMMDD.pdf
-output/BTYYYYMMDD.pdf
 
 Example:
-
-output/BT20251212.pdf
+	```bash
+	output/BT20251212.pdf
 
 
 	•	Temporary per-page PDFs are stored in:
+	```bash
+	output/page_pdfs/
 
-output/page_pdfs/
 
 These are automatically deleted after the merge completes.
 
