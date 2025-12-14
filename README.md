@@ -62,9 +62,9 @@ Configuration
 Edit the CONFIG section in the script:
 
 Login credentials
-	```bash
-	USERNAME = r"user"
-	PASSWORD = r"pass"
+```bash
+USERNAME = r"user"
+PASSWORD = r"pass"
 
 Choose which paper to download
 	```bash
