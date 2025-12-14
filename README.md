@@ -34,15 +34,17 @@ It uses **Playwright** to automate the browser and **pypdf** to merge the PDFs.
 ## Installation
 
 1. Clone the repository:
+```bash
+git clone https://github.com/chuachunmin/NewsScraper.git
+cd NewsScraper
 
-git clone https://github.com/yourusername/sph-newspaper-downloader.git
-cd sph-newspaper-downloader
 
 2. Create and activate a virtual environment (recommended):
-
+```bash
 python -m venv venv
 source venv/bin/activate   # macOS / Linux
 venv\Scripts\activate      # Windows
+
 
 3. Install dependencies:
 
@@ -59,13 +61,15 @@ playwright install
 Edit the CONFIG section in the script.
 
 ### Login credentials
-
+```bash
 USERNAME = r”user”
 PASSWORD = r”pass”
 
-### Select newspaper
 
+### Select newspaper
+```bash
 PAPER_CODE = “ST”  # or “BT”
+
 
 Supported values:
 
@@ -77,8 +81,9 @@ Supported values:
 ## Running the Script
 
 Run:
-
+```bash
 python main.py
+
 
 Execution flow:
 
@@ -93,13 +98,15 @@ Execution flow:
 ## Output
 
 Final PDF files are saved to:
-
+```bash
 output/STYYYYMMDD.pdf
 output/BTYYYYMMDD.pdf
 
-Example:
 
+Example:
+```bash
 output/BT20251212.pdf
+
 
 Temporary per-page PDFs are stored in:
 
