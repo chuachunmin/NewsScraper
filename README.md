@@ -1,73 +1,131 @@
-# SPH e-Paper PDF Scraper
+# SPH Newspaper PDF Downloader
 
-This script automates downloading Straits Times or Business Times e-paper pages (via NLB) and saves the original high-resolution PDFs. Pages are detected through network responses and merged into a single output PDF.
+This script automates the download of full newspaper issues (page-by-page PDFs) from the **NLB SPH Newspapers portal**, then merges them into a single PDF file.
+
+It uses **Playwright** to automate the browser and **pypdf** to merge the PDFs.
+
+---
+
+## Features
+
+- Logs in to the NLB SPH portal
+- Opens a selected newspaper (e.g. Straits Times or Business Times)
+- Automatically navigates through all pages
+- Handles ads that temporarily disable the “next page” button
+- Downloads each page’s PDF directly from network responses
+- Preserves correct page order
+- Merges all pages into a single PDF
+- Cleans up temporary per-page PDFs after completion
 
 ---
 
 ## Requirements
 
-* Python 3.10 or later
-* Playwright
-* pypdf
+- Python 3.10+
+- Google Chrome / Chromium installed
 
-Install dependencies:
+Python packages:
+- `playwright`
+- `pypdf`
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
+---
+
+## Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/chuachunmin/NewsScraper.git
+   cd NewsScraper
+
+	2.	Create and activate a virtual environment (recommended):
+
+python -m venv venv
+source venv/bin/activate   # macOS / Linux
+venv\Scripts\activate      # Windows
+
+
+	3.	Install dependencies:
 
 pip install playwright pypdf
+
+
+	4.	Install Playwright browsers:
+
 playwright install
-```
 
----
 
-## Configuration
 
-Edit credentials in `main.py`:
+⸻
 
-```python
-NLB_USERNAME = r"username"
-NLB_PASSWORD = r"password"
-```
+Configuration
 
-Select which paper to download by setting the correct XPath:
+Edit the CONFIG section in the script:
 
-```python
-PAPER_XPATH = ST_XPATH   # for Straits Times
-# PAPER_XPATH = BT_XPATH # for Business Times
-```
+Login credentials
 
-Output files will be saved under:
+USERNAME = r"user"
+PASSWORD = r"pass"
 
-```
-output/
-output/page_pdfs/
-```
+Choose which paper to download
 
----
+PAPER_CODE = "ST"  # or "BT"
 
-## Running the Script
+Supported values:
+	•	ST – The Straits Times
+	•	BT – The Business Times
 
-Run:
+⸻
 
-```bash
+Running the Script
+
+Run the script normally:
+
 python main.py
-```
 
-The script will:
+What happens:
+	1.	A browser window opens
+	2.	The script logs in
+	3.	The newspaper viewer opens
+	4.	Pages are automatically navigated and captured
+	5.	A merged PDF is created in the output/ folder
 
-1. Open NLB’s SPH newspapers page
-2. Log in using the provided credentials
-3. Open the selected newspaper
-4. Capture every page’s PDF via network responses
-5. Merge them into a single PDF stored in `output/YYYYMMDD.pdf`
+⸻
 
----
+Output
+	•	Final PDF:
 
-## Notes
+output/STYYYYMMDD.pdf
+output/BTYYYYMMDD.pdf
 
-* This script relies on network PDF requests from the e-paper viewer.
-* The next-page button state determines whether to continue, wait for ads, or stop at the end.
-* XPaths may need updating if NLB or SPH changes their layout.
-* This is intended for personal offline reading only.
+Example:
+
+output/BT20251212.pdf
+
+
+	•	Temporary per-page PDFs are stored in:
+
+output/page_pdfs/
+
+These are automatically deleted after the merge completes.
+
+⸻
+
+Notes
+	•	The script runs in non-headless mode for stability.
+	•	Ads are detected automatically and waited out.
+	•	The script stops only when the “next page” button disappears.
+	•	Page PDFs are captured from actual network responses (not screenshots).
+
+⸻
+
+Disclaimer
+
+This script is intended for personal use by users with legitimate access to the NLB SPH portal.
+Ensure compliance with NLB and SPH terms of service.
+
+⸻
+
+License
+
+MIT License
+
