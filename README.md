@@ -62,13 +62,13 @@ Configuration
 Edit the CONFIG section in the script:
 
 Login credentials
-
-USERNAME = r"user"
-PASSWORD = r"pass"
+	```bash
+	USERNAME = r"user"
+	PASSWORD = r"pass"
 
 Choose which paper to download
-
-PAPER_CODE = "ST"  # or "BT"
+	```bash
+	PAPER_CODE = "ST"  # or "BT"
 
 Supported values:
 	•	ST – The Straits Times
@@ -79,8 +79,8 @@ Supported values:
 Running the Script
 
 Run the script normally:
-
-python main.py
+	```bash
+	python main.py
 
 What happens:
 	1.	A browser window opens
