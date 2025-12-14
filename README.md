@@ -38,20 +38,20 @@ Python packages:
    cd NewsScraper
 
 2.	Create and activate a virtual environment (recommended):
-
-python -m venv venv
-source venv/bin/activate   # macOS / Linux
-venv\Scripts\activate      # Windows
+	```bash
+	python -m venv venv
+	source venv/bin/activate   # macOS / Linux
+	venv\Scripts\activate      # Windows
 
 
 3.	Install dependencies:
-
-pip install playwright pypdf
+	```bash
+	pip install playwright pypdf
 
 
 4.	Install Playwright browsers:
-
-playwright install
+	```bash
+	playwright install
 
 
 
