@@ -23,8 +23,14 @@ PASSWORD_SELECTOR = "#password"
 ST_XPATH = "/html/body/div[1]/div/div[1]/div[3]/div[1]/div/div/a/img"
 BT_XPATH = "/html/body/div[1]/div/div[1]/div[3]/div[2]/div/div/a/img"
 
+PAPERS = {
+    "ST" : ST_XPATH,
+    "BT" : BT_XPATH,
+}
+
 # Choose which paper to download
-PAPER_XPATH = ST_XPATH  # or BT_XPATH
+PAPER_CODE = "BT"
+PAPER_XPATH = PAPERS[PAPER_CODE]
 
 # XPaths you gave
 LOGIN_LINK_XPATH = "/html/body/header/div/nlb-header/div/nav/div[2]/div/div[3]/ui-others/div/a"
@@ -286,7 +292,7 @@ def cleanup_page_pdfs():
 def main():
     ensure_dirs()
     today_str = datetime.now().strftime("%Y%m%d")
-    final_pdf_path = OUTPUT_DIR / f"{today_str}.pdf"
+    final_pdf_path = OUTPUT_DIR / f"{PAPER_CODE}{today_str}.pdf"
     print(f"[i] Final merged PDF will be: {final_pdf_path}")
 
     with sync_playwright() as p:
