@@ -21,116 +21,110 @@ It uses **Playwright** to automate the browser and **pypdf** to merge the PDFs.
 
 ## Requirements
 
-- Python 3.10+
-- Google Chrome / Chromium installed
+- Python 3.10 or newer
+- Google Chrome or Chromium
 
-Python packages:
-- `playwright`
-- `pypdf`
+### Python dependencies
+
+- playwright
+- pypdf
 
 ---
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/chuachunmin/NewsScraper.git
-   cd NewsScraper
+1. Clone the repository:
 
-2.	Create and activate a virtual environment (recommended):
-	```bash
-	python -m venv venv
-	source venv/bin/activate   # macOS / Linux
-	venv\Scripts\activate      # Windows
+git clone https://github.com/yourusername/sph-newspaper-downloader.git
+cd sph-newspaper-downloader
 
+2. Create and activate a virtual environment (recommended):
 
-3.	Install dependencies:
-	```bash
-	pip install playwright pypdf
+python -m venv venv
+source venv/bin/activate   # macOS / Linux
+venv\Scripts\activate      # Windows
 
+3. Install dependencies:
 
-4.	Install Playwright browsers:
-	```bash
-	playwright install
+pip install playwright pypdf
 
+4. Install Playwright browsers:
 
+playwright install
 
-⸻
+---
 
-Configuration
+## Configuration
 
-Edit the CONFIG section in the script:
+Edit the CONFIG section in the script.
 
-Login credentials
-	```bash
-	USERNAME = r"user"
-	PASSWORD = r"pass"
+### Login credentials
 
+USERNAME = r”user”
+PASSWORD = r”pass”
 
-Choose which paper to download
-	```bash
-	PAPER_CODE = "ST"  # or "BT"
+### Select newspaper
 
+PAPER_CODE = “ST”  # or “BT”
 
 Supported values:
-	•	ST – The Straits Times
-	•	BT – The Business Times
 
-⸻
+- ST – The Straits Times  
+- BT – The Business Times  
 
-Running the Script
+---
 
-Run the script normally:
-	```bash
-	python main.py
+## Running the Script
 
+Run:
 
-What happens:
-	1.	A browser window opens
-	2.	The script logs in
-	3.	The newspaper viewer opens
-	4.	Pages are automatically navigated and captured
-	5.	A merged PDF is created in the output/ folder
+python main.py
 
-⸻
+Execution flow:
 
-Output
-	•	Final PDF:
-	```bash
-	output/STYYYYMMDD.pdf
-	output/BTYYYYMMDD.pdf
+1. Browser opens
+2. Login is performed
+3. Newspaper viewer loads
+4. Pages are navigated automatically
+5. PDFs are captured and merged
 
+---
+
+## Output
+
+Final PDF files are saved to:
+
+output/STYYYYMMDD.pdf
+output/BTYYYYMMDD.pdf
 
 Example:
-	```bash
-	output/BT20251212.pdf
 
+output/BT20251212.pdf
 
-	•	Temporary per-page PDFs are stored in:
-	```bash
-	output/page_pdfs/
+Temporary per-page PDFs are stored in:
 
+output/page_pdfs/
 
-These are automatically deleted after the merge completes.
+This directory is deleted automatically after the merge completes.
 
-⸻
+---
 
-Notes
-	•	The script runs in non-headless mode for stability.
-	•	Ads are detected automatically and waited out.
-	•	The script stops only when the “next page” button disappears.
-	•	Page PDFs are captured from actual network responses (not screenshots).
+## Notes
 
-⸻
+- The script runs in non-headless mode for stability
+- Ads are detected and waited out automatically
+- Navigation stops only when the next-page button disappears
+- PDFs are captured from network responses, not screenshots
 
-Disclaimer
+---
 
-This script is intended for personal use by users with legitimate access to the NLB SPH portal.
-Ensure compliance with NLB and SPH terms of service.
+## Disclaimer
 
-⸻
+This script is intended for personal use by users with legitimate access to the NLB SPH Newspapers portal.  
+Ensure compliance with all applicable terms of service.
 
-License
+---
+
+## License
 
 MIT License
-
