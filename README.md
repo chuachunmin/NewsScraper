@@ -37,19 +37,19 @@ Python packages:
    git clone https://github.com/chuachunmin/NewsScraper.git
    cd NewsScraper
 
-	2.	Create and activate a virtual environment (recommended):
+2.	Create and activate a virtual environment (recommended):
 
 python -m venv venv
 source venv/bin/activate   # macOS / Linux
 venv\Scripts\activate      # Windows
 
 
-	3.	Install dependencies:
+3.	Install dependencies:
 
 pip install playwright pypdf
 
 
-	4.	Install Playwright browsers:
+4.	Install Playwright browsers:
 
 playwright install
 
